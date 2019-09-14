@@ -13,15 +13,6 @@ package homeassignment2;
  */
 public class SummationUsingRecursion 
 {
-    public static void main(String[] args)
-    {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Enter number of which you wanna find summation of : ");
-//        int N = sc.nextInt();
-//       int result = sum(N);
-//        System.out.println(result);
-       
-    }
  public  int sum(int n)
  {
       if (n==1)
