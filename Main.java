@@ -3,79 +3,86 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package homeassignment2;
-
-import java.util.Scanner;
-
-
+package assignment3;
 
 /**
  *
  * @author Dell
  */
-public class Main 
-{
-    public static void main(String[] args)
+import java.util.Scanner;
+import java.util.ArrayList;
+public class Main {
+
+    /**2
+     * 
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) 
     {
-        while(true){
-        System.out.println("\t\t\t\t\t Welcome To My Program of Recursive Problems \t\t\t\t\t\t"
-                           + "\n> Press 1 to check summation of N numbers"+
-                             "\n> Press 2 to see BinarySearch Implementation Using Recursion"+
-                              "\n> Press 3 to see computation of fibonacci sequence of given input N through Recursion and memoization" +
-                              "\n> Press 4 to see Recursive Implementation of NQueen Problem."+
-                               "\n> Press 5 to exit");
-        Scanner sc =  new Scanner(System.in);
-        int userInput = sc.nextInt();
-//        ========================================   Summation of N =======================================================
-        if (userInput == 1)
-        {
-            SummationUsingRecursion sumN = new SummationUsingRecursion();
-            System.out.println("Enter a number N of which you want to find summation of: ");
-            int N = sc.nextInt();
-            System.out.println("The summation of numbers upto "+ N+" is "+sumN.sum(N));
-        }
-//        ==================================================================================================================
-        
-//        ============================================ BinarySearch Using recursion ========================================
-        if( userInput == 2)
-        {
-            BinarySearchUsingRecursion bin1 = new BinarySearchUsingRecursion();
-            int[] arr1 = {2,45,234,567,876,900,976,999};
-            bin1.display(arr1);
-            int index = bin1.BinarySearch(arr1,45,0,arr1.length);
-            System.out.println("Found 45 at "+index+" index");
-            index = bin1.BinarySearch(arr1,999,0,arr1.length);
-            System.out.println("Found 999 at "+index+" index");
-            index = bin1.BinarySearch(arr1,876,0,arr1.length);
-            System.out.println("Found 876 at "+index+" index");
-        }
-//        ====================================================================================================================
+      Scanner sc = new Scanner(System.in);
+      ArrayList<Polynomial> P = new  ArrayList<>();
+      ArrayList<Polynomial> addResult = new ArrayList<>();
 
-//       ========================================= Fibonacci Sequence using memoization and Recursion ========================
-        if(userInput == 3)
+      int coeff,degF,i;
+      Polynomial p1 = new Polynomial();
+      Polynomial p2 = new Polynomial();
+      Polynomial result = new Polynomial();
+      System.out.println("Enter number of polynomial Equations of you wanted to perform addition on :");
+        int nEqs = sc.nextInt();
+        for ( i = 0; i < nEqs; i++) 
+        {   
+            int iter  = i + 1;
+            System.out.println("Enter degree of polynomial " + iter +": ");
+            degF = sc.nextInt();
+            System.out.println("Enter the coefficients of your first Polynomial in descending order:");
+            for (int j = degF; j > 0; j--) 
         {
-            System.out.println("Enter a number N till where u want to compute your fibonacci sequence: ");
-            int N= sc.nextInt();
-            Fibonacci f1 = new Fibonacci(N);
-            System.out.println("The fibonacci sum upto " + N + " is "+f1.FibSum(N));
-            System.out.println(f1.toString());
+           System.out.println("Enter coeff of x^"+ j + " : ");
+           coeff = sc.nextInt();
+           P.add(new Polynomial());
+           P.get(i).insert(coeff, j);
         }
-//        =====================================================================================================================
-
-//        ========================================N-Queen problem using Recursion (BONUS) ====================================
-        if( userInput == 4 )
+             System.out.print("Constant: ");
+             coeff=sc.nextInt();
+             P.get(i).insert(coeff, 0);
+        }
+                 
+        if( nEqs == 1)
         {
-            NQueenRecursion NQ = new NQueenRecursion();
-            System.out.println("Enter number N of your board: ");
-            int N = sc.nextInt();
-            NQ.NQueen(NQ.createBoard(N), -1);
+            P.get(0).displayEquation();
         }
-//        ======================================================================================================================
-
-        if( userInput == 5)
-      {
-          break;
-      }
-    }
+        else if( nEqs == 2 )
+        {
+            
+                addResult.add(new Polynomial());
+                addResult.get(0).addition(P.get(0), P.get(1));
+                System.out.print("First Polynomial eq is : ");
+                P.get(0).displayEquation();
+                System.out.print("Second Polynomial eq is : ");
+                P.get(1).displayEquation();
+                System.out.print("Polynomial 1 + Polynomial 2 Equation is : ");
+                addResult.get(0).displayEquation();
+            
+        }
+//        else if (nEqs >=3)
+//        {
+//           
+//                addResult.add(new Polynomial());
+//                addResult.get(0).addition(P.get(0), P.get(1));
+//                addResult.get(0).addition(addResult.get(0), P.get(2));  
+//                for (int j = 0; j < i; j++) 
+//                {
+//                System.out.print(j + " Polynomial eq is : ");
+//                P.get(j).displayEquation();
+//                }
+////                System.out.print("Second Polynomial eq is : ");
+////                P.get(j+1).displayEquation();
+////                System.out.print("Third Polynomial eq is : ");
+////                P.get(j+1).displayEquation();
+//                System.out.println("Result Eqaution is : ");
+//                addResult.get(0).displayEquation();
+//            
+//        }
     }
 }
+    
